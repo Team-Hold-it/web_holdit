@@ -118,9 +118,6 @@ PySocks==1.7.1
 python-dateutil==2.8.2
 python-json-logger==2.0.7
 pytz==2023.3
-pywin32==305.1
-pywin32-ctypes==0.2.0
-pywinpty==2.0.10
 PyYAML==6.0
 qtconsole==5.4.3
 QtPy==2.3.1

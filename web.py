@@ -2,11 +2,13 @@ from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
 
+"""
 # 결로 설정
 path = os.getcwd() # C:\Users\user\section6\tp2\code_file
 yolo_path = path + '/yolov5/'
 img_path = path + '/web/static/images/img/'
 predict_path = path + '/web/static/images/'
+"""
 
 app = Flask(__name__, template_folder='templates')
 # /predict에서 업로드 폴더 설정할 때 쓰임
@@ -108,4 +110,5 @@ def download_file(filename):
     return send_from_directory(output_folder, filename, as_attachment=True)
 """
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    port = int(os.getenv('PORT', 8000))
+    app.run(debug=False, host='0.0.0.0', port=port)

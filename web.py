@@ -4,10 +4,10 @@ from werkzeug.utils import secure_filename
 
 """
 # 결로 설정
-path = os.getcwd() # C:\Users\user\section6\tp2\code_file
-yolo_path = path + '/yolov5/'
-img_path = path + '/web/static/images/img/'
-predict_path = path + '/web/static/images/'
+path = os.getcwd() # r"C:\Users\user\section6\tp2\code_file"
+yolo_path = path + r'\yolov5\'
+img_path = path + r'\web\static\images\img\'
+predict_path = path + r'\web\static\images\'
 """
 
 app = Flask(__name__, template_folder='templates')

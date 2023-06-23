@@ -3,7 +3,7 @@ import pandas as pd
 import subprocess
 
 # cctv url불러오기
-df = pd.read_csv("CCTV_API_Test/CCTVID_URL/", index_col=0)
+df = pd.read_csv("CCTV_API_Test/CCTVID_URL.csv", index_col=0)
 
 # CCTV.py
 def get_all_cctv_names():

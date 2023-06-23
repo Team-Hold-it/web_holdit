@@ -1,14 +1,5 @@
 from flask import Flask, render_template, request
 import os
-from werkzeug.utils import secure_filename
-
-"""
-# 결로 설정
-path = os.getcwd() # r"C:\Users\user\section6\tp2\code_file"
-yolo_path = path + r'\yolov5\'
-img_path = path + r'\web\static\images\img\'
-predict_path = path + r'\web\static\images\'
-"""
 
 app = Flask(__name__, template_folder='templates')
 # /predict에서 업로드 폴더 설정할 때 쓰임
@@ -44,39 +35,6 @@ def service():
 def remind():
     return render_template('6_remind.html'), 200
 
-"""
-# service-predict page
-@app.route('/predict', methods=['GET','POST'])
-def detect():
-    if request.method == 'POST':
-        # 오류방지를 위해 미리 설정
-        img_file = None
-        predict_file = None
-
-        # /service 페이지에서 받아온 파일
-        img = request.files['img']
-        filename = secure_filename(img.filename)
-
-        # 확장자 확인 (only jpg of mp4)
-        input_extension = filename.split('.')[-1]
-
-        if input_extension == 'jpg' or input_extension == 'mp4':
-            # 이미지 저장
-            img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-            # 터미널 실행해서 예측
-            terminnal_cmd = f'python {yolo_path}detect.py --source {img_path}{filename} --weights {yolo_path}runs/best.pt --project {predict_path} --name predict --img 640 --conf 0.3 --exist-ok'
-            os.system(terminnal_cmd)
-
-            # static 폴더안에 경로 설정
-            img_file = 'images/img/' + filename
-            predict_file = 'images/predict/' + filename
-
-        return render_template('7_predict.html',
-                               img_file=img_file,
-                               predict_file=predict_file,
-                               input_extension=input_extension)
-"""
 # CCTV 스트림 페이지
 from CCTV import save_stream, get_all_cctv_names # CCTV 모듈에서 save_stream, get_all_cctv_names 함수를 가져옴
 output_folder = 'CCTV_API_Test/web_test_data/'
@@ -101,14 +59,7 @@ def cctv():
         
         # 'cctv.html' 템플릿을 렌더링하여 응답으로 반환. CCTV 이름 목록을 템플릿에 전달
         return render_template('cctv.html', cctvnames=cctvnames), 200
-    
-"""
-from flask import send_from_directory
 
-@app.route('/downloads/<filename>')
-def download_file(filename):
-    return send_from_directory(output_folder, filename, as_attachment=True)
-"""
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 8000))
     app.run(debug=False, host='0.0.0.0', port=port)

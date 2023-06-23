@@ -79,7 +79,7 @@ def detect():
 """
 # CCTV 스트림 페이지
 from CCTV import save_stream, get_all_cctv_names # CCTV 모듈에서 save_stream, get_all_cctv_names 함수를 가져옴
-output_folder = 'CCTV_API_Test\web_test_data\\'
+output_folder = 'CCTV_API_Test/web_test_data/'
 
 # '/cctv' 경로를 처리하는 함수
 @app.route('/cctv', methods=['GET', 'POST'])  # 이 경로는 GET 및 POST 메서드를 모두 처리
